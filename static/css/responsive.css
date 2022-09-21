@@ -1,0 +1,59 @@
+body {
+  padding: 0vH 2vW 0vH 2vW;
+}
+  
+h1 {
+    font-size: 50px;
+}
+  
+/* ====== SPACING ====== */
+  
+.mobile-column {
+    flex-direction: column;
+}
+  
+.mobile-al-center {
+    align-items: center;
+}
+  
+/* ====== PADDING ====== */
+  
+.inlay-padding {
+    margin: 0vH 3vW;
+}
+  
+/* ====== WIDTH & HEIGHT ====== */
+  
+.fifty-vw {
+    width: 80vW;
+}
+  
+.forty-vw {
+    width: 70vW;
+}
+  
+/* ====== HEADER ====== */
+  
+.header-styling {
+    padding: 2vH 2vW 2vH 2vW ;
+}
+    
+.nav-button {
+    margin: 5px;
+}
+  
+.nav-button-first {
+    margin-top: 10px;
+}
+  
+/* ====== FOOTER ====== */
+  
+.footer-styling {
+    padding: 1vH 2vW 1vH 2vW ;
+}
+  
+/* ======= IMAGE ====== */
+  
+.image-width {
+    max-width: 80vW;
+}
