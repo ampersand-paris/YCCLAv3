@@ -398,7 +398,7 @@
   }
   
   .checkout-button:hover {
-    box-shadow: 5px 5px 0px var(--main-blue) !important;
+    box-shadow: 5px 5px 0px;
     cursor: pointer;
   }
   
