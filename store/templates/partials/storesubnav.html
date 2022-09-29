@@ -1,0 +1,8 @@
+{% load static %}
+
+<nav class="flex space-btwn mobile-column mobile-al-center subnav-styling "> 
+	<a class="subnav-button nav-button-first" href="{% url 'store:store' %}"><p>All</p></a>
+	{% for category in links %}
+		<a class="subnav-button" href="{{ category.get_url }}"><p>{{ category.category_name }}</p></a>
+	{% endfor %}
+</nav>

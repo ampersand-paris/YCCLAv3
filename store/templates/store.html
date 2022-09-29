@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block body %}
+    {% include 'partials/storesubnav.html' %}
+    <div class="openDrawer inlay-padding clay-border-three double-border-three bg-blue">
+        <div class="flex column al-center clay-border-three">
+            <div class="fifty-vw margin-bottom bg-cream clay-border-three">
+                <div class="flex column al-center padding">
+                    {% for product in products %}
+                        <div class="margin-top">
+                            <img class="image-width image-height"src="{{ product.images.url }}" />
+                            <div class="flex column padding">
+                                <div >
+                                    <div class="flex space-btwn">
+                                        <a href="{{ product.get_url }}"><h2 class="HWT no-margin" style="color: {{ product.primary_color }}">{{ product.product_name }}</h2></a>
+                                        <h2 class="HWT no-margin" style="color: {{ product.primary_color }}">${{ product.price }}</h2>
+                                    </div>
+                                    <p class="no-margin" style="color: {{ product.primary_color }}">Recipes by: {{ product.recipe_authors }}</p>
+                                    <p class="no-margin" style="color: {{ product.primary_color }}">Illustrations by: {{ product.illustrators}}</p>
+                                </div>
+                                <p style="color: {{ product.secondary_color }}">{{ product.description }}</p>
+                                <div class="flex jc-center">
+                                    <button class="checkout-button" style="color: {{ product.secondary_color }}; border-color: {{ product.secondary_color }}; background-color: {{ product.primary_color }};"><h4 class="HWT">Add to cart</h4></button>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>        
+    </div>
+{% endblock body %}
