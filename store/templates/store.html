@@ -14,7 +14,7 @@
                             <div class="flex column padding">
                                 <div >
                                     <div class="flex space-btwn">
-                                        <h2 class="HWT no-margin" style="color: {{ product.primary_color }}">{{ product.product_name }}</h2>
+                                        <a href="{{ product.get_url }}"><h2 class="HWT no-margin" style="color: {{ product.primary_color }}">{{ product.product_name }}</h2></a>
                                         <h2 class="HWT no-margin" style="color: {{ product.primary_color }}">${{ product.price }}</h2>
                                     </div>
                                     <p class="no-margin" style="color: {{ product.primary_color }}">Recipes by: {{ product.recipe_authors }}</p>
@@ -22,7 +22,7 @@
                                 </div>
                                 <p style="color: {{ product.secondary_color }}">{{ product.description }}</p>
                                 <div class="flex jc-center">
-                                    <button class="checkout-button" style="color: {{ product.secondary_color }}; border-color: {{ product.secondary_color }}; background-color: {{ product.primary_color }}; box-shadow-color: : {{ product.primary_color }} !important"><h4 class="HWT">Add to cart</h4></button>
+                                    <button class="checkout-button" style="color: {{ product.secondary_color }}; border-color: {{ product.secondary_color }}; background-color: {{ product.primary_color }};"><h4 class="HWT">Add to cart</h4></button>
                                 </div>
                             </div>
                         </div>

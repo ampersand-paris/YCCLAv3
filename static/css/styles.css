@@ -664,3 +664,10 @@
       height: 70vH;
       overflow: scroll;
     }
+
+    /* === PRODUCT DETAIL === */
+
+    .out-of-stock {
+      padding: 10px;
+      border-radius: 2px;
+    }

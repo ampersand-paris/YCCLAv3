@@ -1,5 +1,7 @@
 from django.db import models
 from category.models import Category
+from django.urls import reverse 
+
 # Create your models here.
 
 class Product(models.Model):
@@ -18,6 +20,9 @@ class Product(models.Model):
     secondary_color = models.CharField(max_length=100, default="var(--main-red)")
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
+
+    def get_url(self):
+        return reverse('store:product_detail', args=[self.category.slug, self.slug])
 
     def __str__(self):
         return self.product_name
