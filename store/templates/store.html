@@ -22,7 +22,7 @@
                                 </div>
                                 <p style="color: {{ product.secondary_color }}">{{ product.description }}</p>
                                 <div class="flex jc-center">
-                                    <button class="checkout-button" style="color: {{ product.secondary_color }}; border-color: {{ product.secondary_color }}; background-color: {{ product.primary_color }};"><h4 class="HWT">Add to cart</h4></button>
+                                    <a href="{% url 'cart:add_cart' product.id %}" class="checkout-button" style="color: {{ product.secondary_color }}; border-color: {{ product.secondary_color }}; background-color: {{ product.primary_color }};"><h4 class="HWT">Add to cart</h4></a>
                                 </div>
                             </div>
                         </div>
