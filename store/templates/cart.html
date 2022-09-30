@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+    <div class="inlay-padding clay-border-three double-border-three bg-blue">
+        <div class="flex column al-center clay-border-three">
+            <div class="fifty-vw margin-bottom bg-cream clay-border-three">
+                <div class="flex column al-center padding">
+                    <div class="margin-top">
+                        <table>
+                            {% if not cart_items %}
+                                <h2>Your cart is empty.</h2>
+                                <a href="{% url 'store:store' %}">Continue shopping</a>
+                            {% else %}
+                                <h2>Cart</h2>
+                                {% for cart_item in cart_items %}
+                                    <tr>
+                                        <td>
+                                            <img src="{{ cart_item.product.images.url }}" class="image-width image-height">
+                                        </td>
+                                        <div>
+                                            <a href="{{ cart_item.product.get_url }}">{{ cart_item.product.product_name }}</a>
+                                            <p></p>
+                                            <a href="{% url 'cart:subtract_cart' cart_item.product.id %}">-</a>
+                                            <input type="text" value="{{ cart_item.quantity }}">
+                                            <a href="{% url 'cart:add_cart' cart_item.product.id %}">+</a>
+                                            <p>$ {{ cart_item.product.price }} each</p>
+                                            <p>$ {{ cart_item.sub_total }}</p>
+                                            <a href="{% url 'cart:remove_cart_item' cart_item.product.id %}">Remove</a>
+                                        </div>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                        </table>
+                        <h2>$ {{ total }}</h2>
+                        <h2>$ {{ tax }}</h2>
+                        <h2>$ {{ grand_total }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+{% endblock body %}
