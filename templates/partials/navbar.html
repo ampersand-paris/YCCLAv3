@@ -6,4 +6,5 @@
 	<a class="nav-button" href="{% url 'collections:collections' %}"><p>Collections</p></a>
 	<a class="nav-button" href=""><p>Recipes</p></a>
 	<a class="nav-button" href="{% url 'store:store' %}"><p>Store</p></a>
+	<a href="{% url 'cart:cart' %}"><p class="cream-text">Cart: {{ cart_count }}</p></a>
 </nav>
