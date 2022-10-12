@@ -11,27 +11,39 @@
                     <div class="margin-top">
                         <img class="image-width image-height"src="{{ single_product.images.url }}" />
                         <div class="flex column padding">
-                            <div >
-                                <div class="flex space-btwn">
-                                    <h2 class="HWT no-margin" style="color: {{ single_product.primary_color }}">{{ single_product.product_name }}</h2>
-                                    <h2 class="HWT no-margin" style="color: {{ single_product.primary_color }}">${{ single_product.price }}</h2>
+                            <form action="{% url 'cart:add_cart' single_product.id %}" method="POST">
+                                {% csrf_token %}
+                                <div>
+                                    <div class="flex space-btwn">
+                                        <h2 class="HWT no-margin" style="color: {{ single_product.primary_color }}">{{ single_product.product_name }}</h2>
+                                        <h2 class="HWT no-margin" style="color: {{ single_product.primary_color }}">${{ single_product.price }}</h2>
+                                    </div>
+                                    <p class="no-margin" style="color: {{ single_product.primary_color }}">Recipes by: {{ single_product.recipe_authors }}</p>
+                                    <p class="no-margin" style="color: {{ single_product.primary_color }}">Illustrations by: {{ single_product.illustrators}}</p>
                                 </div>
-                                <p class="no-margin" style="color: {{ single_product.primary_color }}">Recipes by: {{ single_product.recipe_authors }}</p>
-                                <p class="no-margin" style="color: {{ single_product.primary_color }}">Illustrations by: {{ single_product.illustrators}}</p>
-                            </div>
-                            <p style="color: {{ single_product.secondary_color }}">{{ single_product.description }}</p>
-                            <div class="flex jc-center">
-                                {% if single_product.stock <= 0 %}
-                                    <h4 class="out-of-stock" style="color: {{ single_product.secondary_color }}; background-color: {{ single_product.primary_color }}">Out of stock</h4>
-                                {% else %}
-                                    {% if in_cart %}
-                                        <a href="#" class="checkout-button" style="color: {{ single_product.primary_color }}; border-color: {{ single_primary.secondary_color }}; background-color: {{ single_product.secondary_color }};"><h4 class="HWT">Added to cart</h4></a>
-                                        <a href="{% url 'cart:cart' %}" class="checkout-button" style="color: {{ single_product.secondary_color }}; border-color: {{ single_product.secondary_color }}; background-color: {{ single_product.primary_color }};"><h4 class="HWT">View cart</h4></a>
+                                <p style="color: {{ single_product.secondary_color }}">{{ single_product.description }}</p>
+                                {% if single_product.variation_set.count > 0 %}
+                                    <p class="no-margin" style="color: {{ single_product.secondary_color }}" >{{ single_product.variation_set.creatures.0.variation_category | capfirst }}</p>
+                                    <select name="creature" required>
+                                        <option value="" disabled selected>Choose YCCLA Pin</option>
+                                        {% for i in single_product.variation_set.creatures %}
+                                            <option value="{{ i.variation_value }}">{{ i.variation_value }}</option>
+                                        {% endfor %}    
+                                    </select>
+                                {% endif %}    
+                                <div class="flex jc-center">
+                                    {% if single_product.stock <= 0 %}
+                                        <h4 class="out-of-stock" style="color: {{ single_product.secondary_color }}; background-color: {{ single_product.primary_color }}">Out of stock</h4>
                                     {% else %}
-                                        <a href="{% url 'cart:add_cart' single_product.id %}" class="checkout-button" style="color: {{ single_product.secondary_color }}; border-color: {{ single_product.secondary_color }}; background-color: {{ single_product.primary_color }};"><h4 class="HWT">Add to cart</h4></a>
+                                        {% if in_cart %}
+                                            <a href="#" class="checkout-button" style="color: {{ single_product.primary_color }}; border-color: {{ single_primary.secondary_color }}; background-color: {{ single_product.secondary_color }};"><h4 class="HWT">Added to cart</h4></a>
+                                            <a href="{% url 'cart:cart' %}" class="checkout-button" style="color: {{ single_product.secondary_color }}; border-color: {{ single_product.secondary_color }}; background-color: {{ single_product.primary_color }};"><h4 class="HWT">View cart</h4></a>
+                                        {% else %}
+                                            <button type="submit" class="checkout-button" style="color: {{ single_product.secondary_color }}; border-color: {{ single_product.secondary_color }}; background-color: {{ single_product.primary_color }};"><h4 class="HWT">Add to cart</h4></button>
+                                        {% endif %}
                                     {% endif %}
-                                {% endif %}
-                            </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
