@@ -36,7 +36,8 @@
                                         <h4 class="out-of-stock" style="color: {{ single_product.secondary_color }}; background-color: {{ single_product.primary_color }}">Out of stock</h4>
                                     {% else %}
                                         {% if in_cart %}
-                                            <a href="#" class="checkout-button" style="color: {{ single_product.primary_color }}; border-color: {{ single_primary.secondary_color }}; background-color: {{ single_product.secondary_color }};"><h4 class="HWT">Added to cart</h4></a>
+                                            <button type="submit" class="checkout-button" style="color: {{ single_product.secondary_color }}; border-color: {{ single_product.secondary_color }}; background-color: {{ single_product.primary_color }};"><h4 class="HWT">Add to cart</h4></button>
+                                            <p style="color: {{ single_product.primary_color }}" class="HWT">Added to cart</p>
                                             <a href="{% url 'cart:cart' %}" class="checkout-button" style="color: {{ single_product.secondary_color }}; border-color: {{ single_product.secondary_color }}; background-color: {{ single_product.primary_color }};"><h4 class="HWT">View cart</h4></a>
                                         {% else %}
                                             <button type="submit" class="checkout-button" style="color: {{ single_product.secondary_color }}; border-color: {{ single_product.secondary_color }}; background-color: {{ single_product.primary_color }};"><h4 class="HWT">Add to cart</h4></button>
